@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @event.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @event.end_date %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<p>
+  <strong>Agenda:</strong>
+  <%= @event.agenda %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @event.address %>
+</p>
+
+<p>
+  <strong>Organizer:</strong>
+  <%= @organizer.email %>
+</p>
+
+<p>
+  <strong>Tags:</strong><br/>
+  <%= @event.all_tags %>
+</p>
+<label>Attendees</label>
+<% @attendances.each do |a| %>
+  <p><%= a.user.email %></p>
+<% end -%><br>
+
+<% if user_signed_in? && @event.organizer_id == current_user.id %>
+  <label>Join Request</label>
+  <% if @pending_requests.present? %>
+    <% @pending_requests.each do |p| %>
+      <%= p.user.email %>
+      <%= link_to 'Accept', event_accept_request_path(event_id:@event.id, attendance_id: p.id) %>
+      <%= link_to 'Reject', event_reject_request_path(event_id:@event.id, attendance_id: p.id) %>
+    <% end %>
+    <% else %>
+      <p>No pending request for rhis event</p>
+  <% end %>
+<% end %> <br>
+
+<%= link_to 'Join', event_join_path(event_id: @event.id), class:"btn btn-primary" %> 
+<%= link_to 'Edit', edit_event_path(@event) if user_signed_in? %> |
+<%= link_to 'Back', events_path %>

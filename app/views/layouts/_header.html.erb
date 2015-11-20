@@ -1,0 +1,12 @@
+<ul class="nav navbar-nav pull-right">
+	<div id='logo'>Eventer</div>
+	<%= link_to "Event", events_path %>
+	<% if user_signed_in? %>
+	<%= link_to "My Event", my_events_path %>
+	<li><%=link_to "#{current_user.email}" %></li>
+	<li class="active"><%= link_to "Logout",destroy_user_session_path, method: :delete%></li>
+	<%else%>
+	<li><%= link_to "Login", new_user_session_path %></li>
+	<li class="active"><%= link_to "SignUp",new_user_registration_path%></li>
+	<%end%>
+</ul>
