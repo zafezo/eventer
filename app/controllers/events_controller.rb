@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy,:accept_request, :reject_request,:join]
-  before_action :authenticate_user!, only: [:new,:edit, :update,:destroy]
+  before_action :authenticate_user!, only: [:new,:edit, :update,:destroy,:join]
   before_action :event_owner!, only: [:update, :edit,:destroy]
   respond_to :html, :json
   # GET /events
@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @events = current_user.organized_events
+    @my_events = current_user.organized_events
   end
 
  def join
@@ -51,7 +51,7 @@ class EventsController < ApplicationController
   def show
     @attendances = Event.show_accepted_attendance(@event.id)
     @pending_requests = Event.pending_requests(@event.id)
-    @organizer = Event.event_owner(@event.id)
+    @organizer = Event.event_owner(@event.organizer)
   end
 
   # GET /events/new

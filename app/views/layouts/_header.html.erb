@@ -1,12 +1,23 @@
-<ul class="nav navbar-nav pull-right">
-	<div id='logo'>Eventer</div>
-	<%= link_to "Event", events_path %>
-	<% if user_signed_in? %>
-	<%= link_to "My Event", my_events_path %>
-	<li><%=link_to "#{current_user.email}" %></li>
-	<li class="active"><%= link_to "Logout",destroy_user_session_path, method: :delete%></li>
-	<%else%>
-	<li><%= link_to "Login", new_user_session_path %></li>
-	<li class="active"><%= link_to "SignUp",new_user_registration_path%></li>
-	<%end%>
-</ul>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<%= link_to 'Eventer', root_path, class:'navbar-brand'%>
+		</div>
+	<div class="navbar-options">
+		<ul class="nav navbar-nav">
+		 <li><%= link_to "All Events", events_path %></li>
+		 <li><%= link_to "My Event", my_events_path if user_signed_in?%> </li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<% if user_signed_in? %>
+				<li><%=link_to "#{current_user.email}" %></li>
+				<li class="active"><%= link_to "Logout",destroy_user_session_path, method: :delete%></li>
+			<%else%>
+				<li><%= link_to "Login", new_user_session_path %></li>
+				<li class="active"><%= link_to "SignUp",new_user_registration_path%></li>
+			<%end%>
+		</ul>
+	</div>
+	</div>
+</nav>

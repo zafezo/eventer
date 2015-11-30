@@ -1,0 +1,19 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+html body {
+    background-color: #E9E0F5;
+} 
+.tag_cloud{
+	position: fixed;
+}
+.my-events:hover{
+	background-color: #B6A4CD;
+}
+
+.btn{
+	font-color:white !important;
+}
+

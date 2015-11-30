@@ -1,20 +1,5 @@
-<div class="col-lg-8">
+
 <h1>Recently Created Events</h1>
-<% @events.each do |e| %>
-	<h3><%= e.title %></h3>
-	<label>Start Date: </label>
-	<%= l e.start_date,format: :short%><br>
-	<label>End Date: </label>
-	<%= l e.end_date,format: :short%>	 <br>
-	<label>Label: </label>
-	<%= e.location %>
-	<address>
-		<%= e.address %><br>
-	</address>
-	<label>Agenda: </label>
-	<%= e.agenda %><br>
-	<label>Organized by: </label>
-		<%= current_user.email %>
-<% end -%>
+<%= render partial:'show', collection: @my_events, as: :event %>
+
 <%= link_to "Create Event", new_event_path %>
-</div>

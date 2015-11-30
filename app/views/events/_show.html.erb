@@ -1,0 +1,19 @@
+
+<%= link_to event_path(event) do %>
+<div class="col-sm-6 my-events">
+	<h3><%= event.title %></h3>
+	<label>Start Date: </label>
+	<%= l event.start_date,format: :short%><br>
+	<label>End Date: </label>
+	<%= l event.end_date,format: :short%>	 <br>
+	<label>Label: </label>
+	<%= event.location %>
+	<address>
+		<%= event.address %><br>
+	</address>
+	<label>Agenda: </label>
+	<%= event.agenda %><br>
+	<label>Organized by: </label>
+		<%= event.organizer.email %>
+</div>
+<% end -%>

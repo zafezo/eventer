@@ -1,3 +1,5 @@
+
+
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -11,40 +13,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title,class:""%>
+<!--     <div class="col-sm-10"> -->
+      <%= f.text_field :title,class:"form-control" %>
+    <!-- </div>     -->
   </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date %>
+  <div class="form-group">
+    <%= f.label :start_date,class:"" %>
+    <%= f.datetime_select :start_date,class:"form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.datetime_select :end_date %>
+  <div class="form-group">
+    <%= f.label :end_date,class:"" %>
+    <%= f.datetime_select :end_date,class:"form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
+  <div class="form-group">
+    <%= f.label :location,class:"" %><br>
+    <%= f.text_field :location,class:"form-control"%>
   </div>
-  <div class="field">
-      <%= f.label :all_tags, "List ALL TAGS, separate each tag by a comma" %>
-      <%= f.text_field :all_tags %>
+  <div class="form-group">
+      <%= f.label :all_tags, "List ALL TAGS, separate each tag by a comma",class:"" %>
+      <%= f.text_field :all_tags,class:"form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :agenda %><br>
-    <%= f.text_area :agenda %>
+  <div class="form-group">
+    <%= f.label :agenda,class:"" %><br>
+    <%= f.text_area :agenda,class:"form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
+  <div class="form-group">
+    <%= f.label :address,class:"" %><br>
+    <%= f.text_area :address,class:"form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :organizer_id %><br>
-    <%= f.number_field :organizer_id %>
+<!--   <div class="form-group">
+    <%= f.label :organizer_id,class:"" %><br>
+    <%= f.number_field :organizer_id,class:"form-control" %>
   </div>
-
+ -->
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Changes", class:"btn btn-success"  %>
   </div>
 <% end %>
