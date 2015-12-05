@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
 
 	def self.tag_counts
 	    Tag.select("tags.name, count(taggings.tag_id) as count").
-	      joins(:taggings).group("taggings.tag_id")
+	      joins(:taggings).group("tags.name")
   	end
 
   	def self.pending_requests(event_id)
